@@ -1,0 +1,198 @@
+body{
+    background: linear-gradient(rgba(0,0,0,0.5),#0bd8c3);
+    background-color:rgb(11, 127, 111);
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    padding: 2px;    
+    text-align: center;
+
+}
+h1{
+    color: #fff;
+}
+
+
+p{
+    font-size: larger;
+}
+
+fieldset{
+    border: 5px Double white;
+    border-radius: 100px;
+}
+#game{
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 500px;
+}
+#u{
+    color: #f9f9f9;
+}
+#comp{
+    color:  #f9f9f9;
+}
+label{
+    font-size: 70px;
+}
+#my-choice, #computer-choice{
+    height: 150px;
+    width: 150px;
+    line-height: 9rem;
+    font-size: medium;
+    border:solid 2px green;
+}
+
+/*Now programming our in puts conditions*/
+
+/* your possible choice against computer*/
+#rock-rock:checked ~ #game #my-choice::before,
+#rock-paper:checked ~ #game #my-choice::before,
+#rock-scissor:checked ~ #game #my-choice::before{
+    content: "✊";
+    font-size: 100px;
+}
+#paper-rock:checked ~ #game #my-choice::before,
+#paper-paper:checked ~ #game #my-choice::before,
+#paper-scissor:checked ~ #game #my-choice::before {
+    content: "✋";
+    font-size: 100px;
+}
+#scissor-rock:checked ~ #game #my-choice::before,
+#scissor-paper:checked ~ #game #my-choice::before,
+#scissor-scissor:checked ~ #game #my-choice::before{
+    content: "✌";
+    font-size: 100px;
+}
+
+/*computer possible choice against you*/
+#rock-rock:checked ~ #game #computer-choice::before,
+#paper-rock:checked ~ #game #computer-choice::before,
+#scissor-rock:checked ~ #game #computer-choice::before{
+    content: "✊";
+    font-size: 100px;
+}
+#rock-paper:checked ~ #game #computer-choice::before,
+#paper-paper:checked ~ #game #computer-choice::before,
+#scissor-paper:checked ~ #game #computer-choice::before{
+    content: "✋";
+    font-size: 100px;
+}
+#rock-scissor:checked ~ #game #computer-choice::before,
+#paper-scissor:checked ~ #game #computer-choice::before,
+#scissor-scissor:checked ~ #game #computer-choice::before{
+    content: "✌";
+    font-size: 100px;
+}
+
+/* now making each of the three options a single item*/
+
+#options{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 6px ;
+    margin-right: 20%;
+}
+
+
+#options > div {
+    position: relative;
+    width: 6rem;
+    height: 6rem;
+    line-height: 6.5rem;
+    border: solid 1px green;
+    border-radius: 1.5rem;
+
+   
+}
+
+label {
+    position: absolute;
+    inset: 0;
+    animation: loop 0.2s infinite;
+  }
+  
+  label:nth-of-type(1) {
+    animation-delay: 0s;
+  }
+  
+  label:nth-of-type(2) {
+    animation-delay: 0.1s;
+  }
+  
+  label:nth-of-type(3) {
+    animation-delay: 0.2s;
+  }
+  
+  @keyframes loop {
+    from {
+      z-index: 1;
+    }
+    to {
+      z-index: 3;
+    }
+  }
+  
+button {
+    padding: 15px 75px;
+    background-color: green;
+    margin-top: 1px;
+    border-radius: 10px;
+    font-size: large;
+    display:none;
+    cursor: pointer;
+    margin-left: 80%;
+
+}
+
+#result{
+    display: none;
+    text-align: right;
+    position: absolute;
+    background-color: rgb(227, 236, 227);
+    padding: 1rem;
+    margin-top: 2rem;
+
+
+    border: 5px solid;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    padding: 10px;
+}
+input[type="radio"]:checked ~ button,
+input[type="radio"]:checked ~ #result {
+    display: block;
+}
+  
+    
+#rock-scissor:checked ~ #result::before,
+#paper-rock:checked ~ #result::before,
+#scissor-paper:checked ~ #result::before {
+    content: "You win! 💪";
+    font-size: 50px;
+    color: darkgreen;
+  
+}
+    
+#rock-paper:checked ~ #result::before,
+#paper-scissor:checked ~ #result::before,
+#scissor-rock:checked ~ #result::before {
+    content: "You lose 🙁";
+    font-size: 50px;
+    color: brown;
+    
+    
+}
+    #rock-rock:checked ~ #result::before,
+    #paper-paper:checked ~ #result::before,
+    #scissor-scissor:checked ~ #result::before {
+      content: "It's a Draw";
+      font-size: 50px;
+      color: rgb(88, 88, 14);
+     
+    }
+input[type="radio"]{
+    display: none;
+}
